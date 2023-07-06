@@ -1,0 +1,58 @@
+Question 1:
+
+1. generate auth_key by login to TMDB
+
+#Gemfile is created in project path
+2. bundle init
+
+#add require gems into your project
+3. 
+gem 'net-http' # for HTTP requests
+gem 'json' #json data
+gem 'sqlite3' #for database connection
+gem 'pry' # for debugging 
+
+#the above bundle data installed into project
+4. bundle install
+
+5. create a file (databeat.rb)
+
+6. connect to Database from the databeat.rb through SQLite3
+db = SQLite3::Database.new('movies.db')
+
+7. Fetching data through TMDB APIs
+
+   popular_movies : https://api.themoviedb.org/3/movie/popular?api_key=<auth_key>
+   reviews_movies : https://api.themoviedb.org/3/movie/385687/reviews?api_key=<auth_key>
+   credits(Cast and Crew) : https://api.themoviedb.org/3/movie/385687/credits?api_key=<auth_key>
+
+8. run the ruby code using
+
+     ruby databeat.rb
+
+9. check the database
+ 
+    sqlite3 movies.db
+   
+
+Question 2:
+a. 
+SELECT id,title
+FROM popular_movies
+LEFT JOIN reviews_movies ON popular_movies.id = reviews_movies.movie_id
+WHERE reviews_movies.movie_id IS NULL;
+
+b. 
+select * , count(*) as movie_count from cc_movies
+group by movie_id
+having movie_count > 1;
+
+
+c.
+  SELECT *, count(*) as movie_count
+  FROM reviews_movies
+  GROUP BY movie_id
+  HAVING COUNT(author_rating) < COUNT(content)
+
+
+Question 3:

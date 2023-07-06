@@ -42,7 +42,7 @@ end
 # fetch popular movies and store them in the database
 def fetch_popular_movies(page, db)
   base_url = 'https://api.themoviedb.org/3'
-  api_key = '1e9409931de4f6cc1ab6d5b8f5f9f5e9' # Replace with your TMDB API key
+  api_key = '<auth_key>' # Replace with your TMDB API key
 
   response = HTTParty.get("#{base_url}/movie/popular", query: {
     api_key: api_key,
@@ -74,7 +74,7 @@ end
 def fetch_movie_reviews(movie_id, db)
 
   base_url = 'https://api.themoviedb.org/3'
-  api_key = '1e9409931de4f6cc1ab6d5b8f5f9f5e9' # Replace with your TMDB API key
+  api_key = '<auth_key>' # Replace with your TMDB API key
 
   response = HTTParty.get("#{base_url}/movie/#{movie_id}/reviews", query: {
     api_key: api_key,
@@ -113,7 +113,7 @@ end
 
 def fetch_movie_cast_and_crew(movie_id, db)
   base_url = 'https://api.themoviedb.org/3'
-  api_key = '1e9409931de4f6cc1ab6d5b8f5f9f5e9' # Replace with your TMDB API key
+  api_key = '<auth_key>' # Replace with your TMDB API key
 
   response = HTTParty.get("#{base_url}/movie/#{movie_id}/credits", query: {
     api_key: api_key,
